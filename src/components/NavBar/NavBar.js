@@ -24,6 +24,11 @@ export default function NavBar() {
                 Login
               </Link>
             </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/products">
+                Products
+              </Link>
+            </li>
           </ul>
         </div>
       </div>
