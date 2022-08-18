@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-export default function NavBar() {
+export default function NavBar({navBarOptions}) {  
   return (
     <nav className="navbar navbar-expand-lg bg-light">
       <div className="container-fluid">
@@ -14,21 +14,15 @@ export default function NavBar() {
         </button>
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav">
-            <li className="nav-item">
-              <Link className="nav-link active" to="/">
-                Home
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/login">
-                Login
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/products">
-                Products
-              </Link>
-            </li>
+            {navBarOptions.map((navBarOption, index) => {
+              return (
+                <li className="nav-item" key={index}>
+                  <Link className="nav-link" to={navBarOption.to}>
+                    {navBarOption.option}
+                  </Link>
+                </li>
+              );
+            })}            
           </ul>
         </div>
       </div>

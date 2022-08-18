@@ -5,10 +5,15 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import NavBar from './components/NavBar/NavBar';
 import ProductsPage from './pages/ProductsPage/ProductsPage';
 
+let navBarOptions = [
+  {option: 'Home', to: '/'},
+  {option: 'Login', to: '/login'},
+  {option: 'products', to: '/products'}
+];
 function App() {
   return (
     <BrowserRouter>
-      <NavBar />
+      <NavBar navBarOptions={navBarOptions} />
       <div className="App">
         <Routes>
           <Route index element={<Home />} />
