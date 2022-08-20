@@ -1,5 +1,6 @@
-import { Link } from 'react-router-dom';
-export default function NavBar({navBarOptions}) {  
+import { Link, useLocation } from 'react-router-dom';
+export default function NavBar({ navBarOptions }) {
+  let location = useLocation();
   return (
     <nav className="navbar navbar-expand-lg bg-light">
       <div className="container-fluid">
@@ -15,14 +16,18 @@ export default function NavBar({navBarOptions}) {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav">
             {navBarOptions.map((navBarOption, index) => {
+              let isActive = '';
+              if (navBarOption.to === location.pathname) {
+                isActive = 'active';
+              }
               return (
                 <li className="nav-item" key={index}>
-                  <Link className="nav-link" to={navBarOption.to}>
+                  <Link className={'nav-link ' + isActive} to={navBarOption.to}>
                     {navBarOption.option}
                   </Link>
                 </li>
               );
-            })}            
+            })}
           </ul>
         </div>
       </div>
