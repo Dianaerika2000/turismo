@@ -1,6 +1,6 @@
-import Button from "../../components/Button/Button";
-import Patito from "../../components/Patito/Patito";
-export default function Home () {
+import Button from '../../components/Button/Button';
+import Patito from '../../components/Patito/Patito';
+export default function Home() {
   return (
     <div className="container">
       <div className="row">

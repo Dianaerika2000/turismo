@@ -6,9 +6,9 @@ import NavBar from './components/NavBar/NavBar';
 import ProductsPage from './pages/ProductsPage/ProductsPage';
 
 let navBarOptions = [
-  {option: 'Home', to: '/'},
-  {option: 'Login', to: '/login'},
-  {option: 'products', to: '/products'}
+  { option: 'Home', to: '/' },
+  { option: 'Login', to: '/login' },
+  { option: 'products', to: '/products' },
 ];
 function App() {
   return (
