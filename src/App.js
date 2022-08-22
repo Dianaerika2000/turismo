@@ -6,6 +6,7 @@ import NavBar from './components/NavBar/NavBar';
 import ProductsPage from './pages/ProductsPage/ProductsPage';
 import ArticlePage from './pages/ArticlePage/ArticlePage';
 import NewsPage from './pages/NewsPage/NewsPage';
+import PlanPage from './pages/PlanPage/PlanPage';
 
 let navBarOptions = [
   { option: 'Home', to: '/' },
@@ -13,6 +14,7 @@ let navBarOptions = [
   { option: 'Products', to: '/products' },
   { option: 'Articles', to: '/article' },
   { option: 'News', to: '/news' },
+  { option: 'Plans', to: '/plans' },
 ];
 function App() {
   return (
@@ -25,6 +27,7 @@ function App() {
           <Route path="products" element={<ProductsPage />} />
           <Route path="article" element={<ArticlePage />} />
           <Route path="news" element={<NewsPage />} />
+          <Route path="plans" element={<PlanPage />} />
         </Routes>
       </div>
     </BrowserRouter>
