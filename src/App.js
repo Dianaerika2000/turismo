@@ -4,11 +4,13 @@ import LoginPage from './pages/LoginPage/LoginPage';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import NavBar from './components/NavBar/NavBar';
 import ProductsPage from './pages/ProductsPage/ProductsPage';
+import ArticlePage from './pages/ArticlePage/ArticlePage';
 
 let navBarOptions = [
   { option: 'Home', to: '/' },
   { option: 'Login', to: '/login' },
-  { option: 'products', to: '/products' },
+  { option: 'Products', to: '/products' },
+  { option: 'Articles', to: '/article' },
 ];
 function App() {
   return (
@@ -19,6 +21,7 @@ function App() {
           <Route index element={<Home />} />
           <Route path="login" element={<LoginPage />} />
           <Route path="products" element={<ProductsPage />} />
+          <Route path="article" element={<ArticlePage />} />
         </Routes>
       </div>
     </BrowserRouter>
