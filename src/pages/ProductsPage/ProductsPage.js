@@ -3,18 +3,19 @@ import Modal from '../../components/Modal/Modal';
 import { useState, useEffect } from 'react';
 let productModal = null;
 export default function ProductsPage() {
-  //valores init
+  // default values
   const computersInit = [{ os: 'Windows', ram: '12GB', diskStorage: '200GB' }];
   const headerRows = [];
   const headers = ['OS', 'RAM', 'Disk Storage'];
   headers.forEach((header, index) => {
     headerRows.push(<th key={index}>{header}</th>);
   });
-  //manejo de estados
+  // states
   const [osState, setOsState] = useState('');
   const [ramState, setRamState] = useState('');
   const [diskStorageState, setDiskStorageState] = useState('');
   const [computersState, setComputersState] = useState(computersInit);
+  // effects
   useEffect(() => {
     if (!productModal) {
       productModal = new window.bootstrap.Modal('#productModal');
@@ -23,6 +24,7 @@ export default function ProductsPage() {
       productModal = null;
     };
   }, []);
+  // handlers
   const handleChangeOS = (e) => {
     setOsState(e.target.value);
   };
@@ -32,7 +34,6 @@ export default function ProductsPage() {
   const handleChangeDiskStorage = (e) => {
     setDiskStorageState(e.target.value);
   };
-
   //functions
   const addComputer = () => {
     // add computer to state
@@ -50,8 +51,7 @@ export default function ProductsPage() {
     setDiskStorageState('');
     productModal.hide();
   };
-
-  //footer
+  // modal footer
   const modalFooter = (
     <>
       <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">
@@ -62,7 +62,6 @@ export default function ProductsPage() {
       </button>
     </>
   );
-
   //render
   return (
     <div className="container">
