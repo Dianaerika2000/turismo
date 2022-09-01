@@ -7,6 +7,7 @@ import ProductsPage from './pages/ProductsPage/ProductsPage';
 import Boot from './redux/boot';
 import MyProfilePage from './pages/Admin/MyProfilePage/MyProfilePage';
 import PrivateRoute from './utility/PrivateRoute';
+import ListExamplePage from './pages/Admin/ListExamplePage/ListExamplePage';
 
 const App = () => {
   // options
@@ -38,6 +39,16 @@ const App = () => {
               </PrivateRoute>
             }
           />
+          <Route path="admin/list">
+            <Route
+              path=":listId"
+              element={
+                <PrivateRoute>
+                  <ListExamplePage />
+                </PrivateRoute>
+              }
+            />
+          </Route>
         </Routes>
       </div>
     </BrowserRouter>
