@@ -3,8 +3,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import authAction from '../../redux/auth/actions';
 import { useNavigate } from 'react-router-dom';
 
-const { login } = authAction;
 export default function LoginPage() {
+  const { login } = authAction;
   let navigate = useNavigate();
   // redux
   const isLoggedIn = useSelector((state) => state.Auth.idToken);
@@ -16,6 +16,7 @@ export default function LoginPage() {
   useEffect(() => {
     if (isLoggedIn) {
       setRedirectToReferrer(true);
+      return navigate('/');
     }
   }, [isLoggedIn]);
   // handlers
@@ -31,9 +32,6 @@ export default function LoginPage() {
       dispatch(login());
     }
   };
-  if (redirectToReferrer) {
-    return navigate('/');
-  }
   return (
     <div className="container">
       <div className="row">

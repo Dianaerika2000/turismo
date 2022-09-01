@@ -16,7 +16,6 @@ export function* loginRequest() {
         token: result.token,
         user: result.user ? result.user : {},
       });
-      //history.push('/dashboard');
     } else {
       yield put({ type: actions.LOGIN_ERROR });
     }
@@ -26,20 +25,18 @@ export function* loginSuccess() {
   yield takeEvery(actions.LOGIN_SUCCESS, function* (payload) {
     yield storageSave('id_token', payload.token);
     yield storageSave('user', payload.user);
-    if (history.location.pathname === '/') {
-      yield history.push('/dashboard');
-    }
   });
 }
 export function* loginError() {
   yield takeEvery(actions.LOGIN_ERROR, function* () {
     yield storageDelete('user');
-    history.push('/');
+    yield storageDelete('id_token');
   });
 }
 export function* logout() {
   yield takeEvery(actions.LOGOUT, function* () {
     yield storageDelete('user');
+    yield storageDelete('id_token');
     history.push('/');
   });
 }
