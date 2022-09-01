@@ -1,25 +1,72 @@
-import ModalButton from '../../components/Modal/ModalButton';
-import Modal from '../../components/Modal/Modal';
+import { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import authAction from '../../redux/auth/actions';
+import { useNavigate } from 'react-router-dom';
 
-const modalFooter = (
-  <>
-    <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">
-      Cerrar
-    </button>
-    <button type="button" className="btn btn-primary">
-      Guardar cambios
-    </button>
-  </>
-);
-
+const { login } = authAction;
 export default function LoginPage() {
+  let navigate = useNavigate();
+  // redux
+  const isLoggedIn = useSelector((state) => state.Auth.idToken);
+  const dispatch = useDispatch();
+  // states
+  const [userInfo, setUserInfo] = useState({ email: '', password: '' });
+  const [redirectToReferrer, setRedirectToReferrer] = useState(false);
+  // effects
+  useEffect(() => {
+    if (isLoggedIn) {
+      setRedirectToReferrer(true);
+    }
+  }, [isLoggedIn]);
+  // handlers
+  const handleLogin = (e) => {
+    e.preventDefault();
+    const user = {
+      email: userInfo.email,
+      password: userInfo.password,
+    };
+    if (user) {
+      dispatch(login(user));
+    } else {
+      dispatch(login());
+    }
+  };
+  if (redirectToReferrer) {
+    return navigate('/');
+  }
   return (
-    <div className="Login">
-      <h2>Login</h2>
-      <ModalButton targetId="loginModal">Abrir Modal</ModalButton>
-      <Modal targetId="loginModal" modalTitle="Hola!" modalFooter={modalFooter}>
-        Login
-      </Modal>
+    <div className="container">
+      <div className="row">
+        <div className="col-4 my-3">
+          <div className="Login">
+            <h2>Login</h2>
+            <form onSubmit={handleLogin}>
+              <div className="mb-3">
+                <label className="form-label">Email address</label>
+                <input
+                  type="email"
+                  className="form-control"
+                  value={userInfo.email}
+                  onChange={(e) => setUserInfo({ ...userInfo, email: e.target.value })}
+                />
+                <div className="form-text">We'll never share your email with anyone else.</div>
+              </div>
+              <div className="mb-3">
+                <label className="form-label">Password</label>
+                <input
+                  type="password"
+                  className="form-control"
+                  value={userInfo.password}
+                  onChange={(e) => setUserInfo({ ...userInfo, password: e.target.value })}
+                />
+              </div>
+              <button type="submit" className="btn btn-primary">
+                Submit
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
