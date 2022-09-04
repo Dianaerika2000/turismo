@@ -9,9 +9,3 @@ export const storageGet = (param) => {
 export const storageDelete = (param) => {
   localStorage.removeItem(param);
 };
-
-export default {
-  storageSave,
-  storageGet,
-  storageDelete,
-};

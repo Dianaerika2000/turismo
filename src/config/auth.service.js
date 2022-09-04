@@ -1,5 +1,4 @@
 import { api } from './site.config';
-import { storageGet, storageSave, storageDelete } from '../services/storage';
 
 class AuthService {
   login(user) {

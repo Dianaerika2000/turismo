@@ -11,14 +11,12 @@ export default function LoginPage() {
   const dispatch = useDispatch();
   // states
   const [userInfo, setUserInfo] = useState({ email: '', password: '' });
-  const [redirectToReferrer, setRedirectToReferrer] = useState(false);
   // effects
   useEffect(() => {
     if (isLoggedIn) {
-      setRedirectToReferrer(true);
       return navigate('/');
     }
-  }, [isLoggedIn]);
+  }, [isLoggedIn, navigate]);
   // handlers
   const handleLogin = (e) => {
     e.preventDefault();

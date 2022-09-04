@@ -26,9 +26,7 @@ export default function NavBarOption({ navBarOption }) {
         }}
         className="nav-item"
       >
-        <a className="nav-link" href="#">
-          {navBarOption.option}
-        </a>
+        <span className="nav-link">{navBarOption.option}</span>
       </li>
     );
   }
