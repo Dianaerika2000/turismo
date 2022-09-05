@@ -1,9 +1,14 @@
 import { api } from './site.config';
+import { storageDelete, storageGet } from '../services/storage';
+import authAction from '../redux/auth/actions';
 
 /**
  * Manages login/register functions at the API
  */
 class AuthService {
+  getCurrentUser() {
+    return { ...storageGet('user'), token: storageGet('id_token') };
+  }
   /**
    * Logs in a user
    * @param user
@@ -21,6 +26,9 @@ class AuthService {
         }
         return response.data;
       });
+  }
+  logout() {
+    storageDelete('user');
   }
   register(user) {
     return api.post('auth/register', {

@@ -9,6 +9,9 @@ import ProductsPage from './pages/ProductsPage/ProductsPage';
 import MyProfilePage from './pages/Admin/MyProfilePage/MyProfilePage';
 import ListExamplePage from './pages/Admin/ListExamplePage/ListExamplePage';
 
+// eslint-disable-next-line no-unused-vars
+import axiosInterceptor from './utility/axios-token-interceptor';
+
 /**
  * Main App component
  * @returns {JSX.Element}

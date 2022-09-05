@@ -1,13 +1,14 @@
 import { api } from '../config/site.config';
 import { createBrowserHistory } from 'history';
-import AuthService from '@/services/auth.service';
+import AuthService from '../config/auth.service';
 
 const history = createBrowserHistory();
+
 // Request interceptor
 api.interceptors.request.use(
   (config) => {
     const user = AuthService.getCurrentUser();
-    if (user != null && user.token != null) {
+    if (user.token != null) {
       config.headers.Authorization = `Bearer ${user.token}`;
     }
     return config;
