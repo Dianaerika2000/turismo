@@ -1,6 +1,14 @@
 import { api } from './site.config';
 
+/**
+ * Manages login/register functions at the API
+ */
 class AuthService {
+  /**
+   * Logs in a user
+   * @param user
+   * @returns {Promise<AxiosResponse<any>>}
+   */
   login(user) {
     return api
       .post('auth/login', {

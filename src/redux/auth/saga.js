@@ -32,6 +32,7 @@ export function* loginError() {
     yield storageDelete('user');
     yield storageDelete('id_token');
   });
+  // If users in the app should be logged in redirect to login page here >>>>
 }
 export function* logout() {
   yield takeEvery(actions.LOGOUT, function* () {

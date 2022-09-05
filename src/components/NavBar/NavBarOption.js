@@ -1,6 +1,13 @@
 import { Link, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import authAction from '../../redux/auth/actions';
+
+/**
+ * Single NavBarOption, checks if user is logged in or not to display an option
+ * @param navBarOption
+ * @returns {JSX.Element}
+ * @constructor
+ */
 export default function NavBarOption({ navBarOption }) {
   const { logout } = authAction;
   const isLoggedIn = useSelector((state) => state.Auth.idToken);

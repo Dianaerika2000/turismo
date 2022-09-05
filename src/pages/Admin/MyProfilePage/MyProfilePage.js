@@ -1,3 +1,8 @@
+/**
+ * My Profile Page
+ * @returns {JSX.Element}
+ * @constructor
+ */
 export default function MyProfilePage() {
   return (
     <div className="container">

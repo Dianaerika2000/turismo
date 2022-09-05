@@ -1,5 +1,11 @@
 import Button from '../../components/Button/Button';
 import Patito from '../../components/Patito/Patito';
+
+/**
+ * HomePage
+ * @returns {JSX.Element}
+ * @constructor
+ */
 export default function Home() {
   return (
     <div className="container">

@@ -1,14 +1,19 @@
 import './assets/scss/stylesheet.scss';
+import Boot from './redux/boot';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import PrivateRoute from './utility/PrivateRoute';
+import NavBar from './components/NavBar/NavBar';
 import Home from './pages/Home/Home';
 import LoginPage from './pages/LoginPage/LoginPage';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import NavBar from './components/NavBar/NavBar';
 import ProductsPage from './pages/ProductsPage/ProductsPage';
-import Boot from './redux/boot';
 import MyProfilePage from './pages/Admin/MyProfilePage/MyProfilePage';
-import PrivateRoute from './utility/PrivateRoute';
 import ListExamplePage from './pages/Admin/ListExamplePage/ListExamplePage';
 
+/**
+ * Main App component
+ * @returns {JSX.Element}
+ * @constructor
+ */
 const App = () => {
   // options
   let navBarOptions = {

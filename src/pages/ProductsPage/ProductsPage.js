@@ -2,6 +2,12 @@ import ModalButton from '../../components/Modal/ModalButton';
 import Modal from '../../components/Modal/Modal';
 import { useState, useEffect } from 'react';
 let productModal = null;
+
+/**
+ * Bootstrap's Modal component implementation example
+ * @returns {JSX.Element}
+ * @constructor
+ */
 export default function ProductsPage() {
   // default values
   const computersInit = [{ os: 'Windows', ram: '12GB', diskStorage: '200GB' }];

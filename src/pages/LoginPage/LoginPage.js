@@ -3,6 +3,11 @@ import { useSelector, useDispatch } from 'react-redux';
 import authAction from '../../redux/auth/actions';
 import { useNavigate } from 'react-router-dom';
 
+/**
+ * Login Page
+ * @returns {JSX.Element}
+ * @constructor
+ */
 export default function LoginPage() {
   const { login } = authAction;
   let navigate = useNavigate();

@@ -1,4 +1,10 @@
 import { useParams } from 'react-router-dom';
+
+/**
+ * List params using useParams hook
+ * @returns {JSX.Element}
+ * @constructor
+ */
 export default function ListExamplePage() {
   let params = useParams();
   console.log(params);

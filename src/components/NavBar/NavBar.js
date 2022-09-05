@@ -1,4 +1,11 @@
 import NavBarOption from './NavBarOption';
+
+/**
+ * Displays a Bootstrap Navbar
+ * @param navBarOptions
+ * @returns {JSX.Element}
+ * @constructor
+ */
 export default function NavBar({ navBarOptions }) {
   return (
     <nav className="navbar navbar-expand-lg bg-light">
