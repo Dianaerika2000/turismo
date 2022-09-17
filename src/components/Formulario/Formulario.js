@@ -29,7 +29,7 @@ export default function Formulario(){
           </div>
           <div className="row mt-3">
             <div className="col text-center">
-              <button type="submit" className="btn btn-primary">Enviar</button>
+              <button type="submit" className="btn btn-info text-light">Enviar</button>
             </div>
           </div>
         </div>
