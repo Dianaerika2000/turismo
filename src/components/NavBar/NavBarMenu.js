@@ -4,9 +4,9 @@ export default function NavBarMenu({NavBarOptions}) {
   return (
     <nav className="navbar navbar-expand-lg bg-light">
       <div className="container">
-        <a className="navbar-brand" href="#">
-          Navbar
-        </a>
+        <Link className="navbar-brand" to="/">
+          TRAVELNET
+        </Link>
         <button
           className="navbar-toggler"
           type="button"
