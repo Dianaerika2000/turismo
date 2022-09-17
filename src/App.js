@@ -2,15 +2,14 @@ import './assets/scss/stylesheet.scss';
 import Boot from './redux/boot';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import PrivateRoute from './utility/PrivateRoute';
-import NavBar from './components/NavBar/NavBar';
+import NavBarMenu from './components/NavBar/NavBarMenu';
 import Home from './pages/Home/Home';
-import LoginPage from './pages/LoginPage/LoginPage';
-import ProductsPage from './pages/ProductsPage/ProductsPage';
-import MyProfilePage from './pages/Admin/MyProfilePage/MyProfilePage';
-import ListExamplePage from './pages/Admin/ListExamplePage/ListExamplePage';
 
 // eslint-disable-next-line no-unused-vars
 import axiosInterceptor from './utility/axios-token-interceptor';
+import PaquetesPage from './pages/PaquetesPage/PaquetesPage';
+import Footer from './components/Footer/Footer';
+import PaqueteDetallesPage from './pages/PaqueteDetallesPage/PaqueteDetallesPage';
 
 /**
  * Main App component
@@ -19,46 +18,36 @@ import axiosInterceptor from './utility/axios-token-interceptor';
  */
 const App = () => {
   // options
-  let navBarOptions = {
-    main: [
-      { option: 'Home', to: '/' },
-
-      { option: 'Products', to: '/products' },
-    ],
-    right: [
-      { option: 'My Profile', to: '/my-profile', displayIfLoggedIn: true },
-      { option: 'Login', to: '/login', displayIfLoggedIn: false },
-      { option: 'Logout', to: '/logout', displayIfLoggedIn: true },
-    ],
-  };
+  let arNavBarOption = [
+    {option: 'Home', to: '/'},
+    {option: 'Acerca de nosotros', to: '/nosotros'},
+    {option: 'Paquetes', to: '/paquetes'},
+    {option: 'Destinos', to: '/destinos'},
+    {option: 'Preguntas frecuentes', to: '/preguntas'},
+    {option: 'Contacto', to: '/contacto'},
+  ];
+  let arDatosFooter = [
+    {
+     nombre: 'Travelnet',
+     slogan: 'Somos Travelnet, una empresa reconocida en Pueblo Libre. En nuestra agencia de viajes ofrecemos la venta de pasajes aéreos y terrestres,  nacionales como internacionales, servicios de cruceros, paquetes nacionales e internacionales, seguros  de viajes, entre otros servicios.',
+     facebook: 'https://www.facebook.com/AmaszonasLineaAerea',
+     twitter: 'https://twitter.com/amaszonas/',
+     instagram: 'https://www.instagram.com/amaszonasoficial/', 
+    },
+  ];
   return (
     <BrowserRouter>
-      <NavBar navBarOptions={navBarOptions} />
+      <NavBarMenu NavBarOptions={arNavBarOption}/>
       <div className="App">
         <Routes>
           <Route index element={<Home />} />
-          <Route path="login" element={<LoginPage />} />
-          <Route path="products" element={<ProductsPage />} />
-          <Route
-            path="my-profile"
-            element={
-              <PrivateRoute>
-                <MyProfilePage />
-              </PrivateRoute>
-            }
-          />
-          <Route path="admin/list">
-            <Route
-              path=":listId"
-              element={
-                <PrivateRoute>
-                  <ListExamplePage />
-                </PrivateRoute>
-              }
-            />
+          <Route path="/paquetes" element={<PaquetesPage/>}/>
+          <Route path="/paquetes">
+            <Route path=":paqueteId" element={<PaqueteDetallesPage/>}/>
           </Route>
         </Routes>
       </div>
+      <Footer data={arDatosFooter[0]}/>
     </BrowserRouter>
   );
 };
